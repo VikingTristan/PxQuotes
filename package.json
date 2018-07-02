@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "webpack-dev-server --mode development --open",
     "build": "webpack --mode production",
-    "start": "npm run dev",
+    "start": "npm run build",
     "test": "test"
   },
   "repository": {

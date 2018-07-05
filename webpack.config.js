@@ -38,6 +38,11 @@ module.exports = {
             }
         ]
     },
+    resolve: {
+        alias: {
+            "vue$": "vue/dist/vue.esm.js" // <-- Full version, we could eventually go runtime-only with "vue.runtime.esm.js"
+        }
+    },
     plugins: [
         new VueLoaderPlugin(), 
         new HtmlWebPackPlugin({

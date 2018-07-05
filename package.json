@@ -4,7 +4,7 @@
   "description": "A simple quote CRUD application.",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack-dev-server --mode development --open",
+    "dev": "webpack-dev-server --mode development",
     "build": "webpack --mode production",
     "start": "npm run dev",
     "test": "test"

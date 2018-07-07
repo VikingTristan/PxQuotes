@@ -3,7 +3,7 @@
   "dockerfileLines" :[
                         "FROM node:8.7.0-alpine",
                         "RUN mkdir -p /usr/src/app",
-                        "ADD . /usr/src/app",
+                        "ADD ./. /usr/src/app",
                         "WORKDIR /usr/src/app",
                         "RUN npm install webpack-dev-server -g && npm install && npm cache clean --force",
                         "CMD [ \"npm\", \"run\", \"docker\" ]"

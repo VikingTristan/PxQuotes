@@ -4,8 +4,13 @@ const {
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const Dotenv = require("dotenv-webpack");
+const path = require("path");
 
 module.exports = {
+    output: {
+        path: path.resolve(__dirname, "dist"),
+        publicPath: "/"
+    },
     module: {
         rules: [
             //JS
@@ -44,7 +49,8 @@ module.exports = {
         }
     },
     devServer: {
-        disableHostCheck: true
+        disableHostCheck: true,
+        historyApiFallback: true,
     },
     plugins: [
         new VueLoaderPlugin(), 

@@ -7,7 +7,7 @@
             <h2 class="panel-title">Login</h2>
           </header>
           <div class="panel-body">
-            <form>
+            <form v-on:submit.prevent>
               <div class="form-group">
                 <label for="username">Username</label>
                 <div class="input-group">
@@ -20,10 +20,7 @@
                   <input v-model="password" rows="6" type="password" id="password" class="form-control" placeholder="Enter password" />
                 </div>
               </div>
-              <div class="alert alert-error in" v-show="showError">
-                <p class="alert-text">Wrong username or password!</p>
-              </div>
-              <button class="btn btn-brand pull-right" type="button" @click="login">Log in</button>
+              <button class="btn btn-brand pull-right" type="submit" @click="login">Log in</button>
             </form>
           </div>
         </section>
@@ -36,30 +33,44 @@
 import LoginService from "../services/LoginService";
 
 export default {
-    name: "Login",
-    data () {
-        return {
-            username: "",
-            password: "",
-            showError: false
-        };
-    },
-    methods: {
-        async login () {
-            try {
-                await LoginService.login({
-                    username: this.username,
-                    password: this.password
-                });
-                this.$router.push({
-                    name: "Quotes"
-                });
-            } catch (e) {
-                this.showError = true;
-                console.log(e);
-            }
-        }
-    }
-};
+  name: "Login",
+  data() {
+    return {
+      username: "",
+      password: "",
+      showError: false
+    };
+  },
+  methods: {
+    async login() {
+      console.log("Attempting to log in");
+      // try {
+      await LoginService.login({
+        username: this.username,
+        password: this.password
+      })
+        .then(() => {
+          this.$snotify.success("Logged in.");
+          this.$router.push({
+            name: "Quotes"
+          });
+        })
+        .catch(e => {
+          console.log("unable to log in: ", e);
+          this.$snotify.error("Wrong username or password.");
+          // this.showError = true;
+        });
 
+      // console.log("Response here?", response);
+
+      // this.$router.push({
+      //   name: "Quotes"
+      // });
+      // } catch (e) {
+      //     this.showError = true;
+      //     console.log(e);
+      // }
+    }
+  }
+};
 </script>

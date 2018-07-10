@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import LoginService from "../services/LoginService";
+import AuthenticationService from "../services/AuthenticationService";
 
 export default {
   name: "Login",
@@ -45,7 +45,7 @@ export default {
     async login() {
       console.log("Attempting to log in");
       // try {
-      await LoginService.login({
+      await AuthenticationService.login({
         username: this.username,
         password: this.password
       })

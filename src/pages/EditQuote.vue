@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import QuotesService from "../services/QuotesService.js";
+import QuotesService from "@/services/QuotesService.js";
 
 export default {
     name: "EditQuote",

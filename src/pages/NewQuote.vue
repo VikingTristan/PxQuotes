@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import QuotesService from "../services/QuotesService";
+import QuotesService from "@/services/QuotesService";
 
 export default {
     name: "NewQuote",

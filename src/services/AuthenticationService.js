@@ -1,7 +1,7 @@
 import Api from "@/services/Api";
 
 export default {
-    login (params) {
-        return Api().get("login", params);
+    login () {
+        return Api().get("login");
     }
 };

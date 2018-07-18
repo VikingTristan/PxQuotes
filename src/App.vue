@@ -6,13 +6,14 @@
 </template>
 
 <script>
+import DesignGuideScript from "@/assets/js/designguide";
 export default {
     name: "App"
 };
 </script>
 
 <style>
-    @import "./assets/less/designguide-0.6.0.less";
+    @import "./assets/less/designguide.less";
     /* @import "./assets/less/style.less"; */
     @import "./assets/less/snotify.less";
 </style>

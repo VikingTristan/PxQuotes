@@ -4,21 +4,21 @@
       <div class="col-md-6 offset-md-3">
         <section class="panel panel-default">
           <header>
-            <h2 class="panel-title">Login</h2>
+            <h2 class="panel-title">Welcome</h2>
           </header>
 
           <div class="panel-body text-center">
             <div class="center">
-              <div class="loader loader-large loader-muted d-block" v-if="loading">
+              <!-- <div class="loader loader-large loader-muted d-block" v-if="loading">
                 <ul class="loader-icon">
                   <li></li>
                   <li></li>
                   <li></li>
                 </ul>
-              </div>
-              <div v-else>
-                <h3 class="color-danger">Auth0 was unable to log you in.</h3>
-              </div>
+              </div> -->
+              <!-- <div v-else> -->
+                <h3 class="color-success">Hi, welcome...</h3>
+              <!-- </div> -->
             </div>
           </div>
         </section>
@@ -31,9 +31,9 @@
   import AuthenticationService from "@/services/AuthenticationService";
 
   export default {
-    name: "Login",
+    name: "Callback",
     mounted() {
-      this.login();
+      // this.login();
     },
     data() {
       return {
@@ -42,21 +42,21 @@
       };
     },
     methods: {
-      async login() {
-        await AuthenticationService.login()
-          .then(() => {
-            this.$snotify.success("Logged in.");
-            this.$router.push({
-              name: "Quotes"
-            });
-          })
-          .catch(e => {
-            console.log("unable to log in: ", e);
-            this.$snotify.error("Unable to log in.");
-            this.showError = true;
-            this.loading = false;
-          });
-      }
+      // async login() {
+      //   await AuthenticationService.login()
+      //     .then(() => {
+      //       this.$snotify.success("Logged in.");
+      //       this.$router.push({
+      //         name: "Quotes"
+      //       });
+      //     })
+      //     .catch(e => {
+      //       console.log("unable to log in: ", e);
+      //       this.$snotify.error("Unable to log in.");
+      //       this.showError = true;
+      //       this.loading = false;
+      //     });
+      // }
     }
   };
 </script>

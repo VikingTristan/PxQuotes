@@ -4,6 +4,7 @@ import Quotes from "@/pages/Quotes.vue";
 import NewQuote from "@/pages/NewQuote.vue";
 import EditQuote from "@/pages/EditQuote.vue";
 import Login from "@/pages/Login.vue";
+import Callback from "@/pages/Callback.vue";
 
 Vue.use(Router);
 
@@ -28,6 +29,11 @@ export default new Router({
                  path: "/login",
                  name: "Login",
                  component: Login
+             },
+             {
+                 path: "/callback",
+                 name: "Callback",
+                 component: Callback
              }
 
     ]

@@ -16,7 +16,7 @@
                   <li></li>
                 </ul>
               </div>
-              <div v-else>
+              <div v-if="showError">
                 <h3 class="color-danger">Auth0 was unable to log you in.</h3>
               </div>
             </div>
@@ -28,37 +28,37 @@
 </template>
 
 <script>
-  import AuthenticationService from "@/services/AuthenticationService";
+import AuthenticationService from "@/services/AuthenticationService";
 
-  export default {
+export default {
     name: "Login",
     mounted() {
-      this.login();
+        this.login();
     },
     data() {
-      return {
-        loading: true,
-        showError: false
-      };
+        return {
+            loading: true,
+            showError: false
+        };
     },
     methods: {
-      async login() {
-        await AuthenticationService.login()
-          .then(() => {
-            this.$snotify.success("Logged in.");
-            this.$router.push({
-              name: "Quotes"
+        async login() {
+            await AuthenticationService.login()
+                .then(() => {
+                    this.$snotify.success("Logged in.");
+                    this.$router.push({
+                        name: "Quotes"
+                    });
+                })
+                .catch(e => {
+                    console.log("unable to log in: ", e);
+                    this.$snotify.error("Unable to log in.");
+                    this.showError = true;
+                    this.loading = false;
             });
-          })
-          .catch(e => {
-            console.log("unable to log in: ", e);
-            this.$snotify.error("Unable to log in.");
-            this.showError = true;
-            this.loading = false;
-          });
-      }
+        }
     }
-  };
+};
 </script>
 
 <style>

@@ -39,6 +39,10 @@
                 </tbody>
               </table>
             </div>
+            <div v-if="errors.api" style="padding: 50px; text-align: center;">
+                <h1 v-html="shrugGuy"></h1>
+                <h2 class="color-danger">No API connection.</h2>
+            </div>
           </div>
           <footer v-if="quotes.length">
             <router-link v-bind:to="{ name: 'NewQuote' }" class="btn btn-brand btn-lg">
@@ -52,38 +56,47 @@
 </template>
 
 <script>
-  import QuotesService from "@/services/QuotesService";
+import QuotesService from "@/services/QuotesService";
 
-  export default {
+export default {
     name: "quotes",
     data() {
-      return {
-        fetching: true,
-        shrugGuy: "¯\\_(ツ)_/¯¯",
-        quotes: []
-      };
+        return {
+            fetching: true,
+            errors: {
+                api: false
+            },
+            shrugGuy: "¯\\_(ツ)_/¯¯",
+            quotes: []
+        };
     },
     mounted() {
-      this.getQuotes();
-      this.drawShrug();
+        this.getQuotes();
+        this.drawShrug();
     },
     methods: {
-      async getQuotes() {
-        const response = await QuotesService.fetchQuotes();
-        this.fetching = false;
-        this.quotes = response.data.quotes;
-      },
-      drawShrug() {
-        setInterval(() => {
-          if (this.shrugGuy === "¯\\_(ツ)_/¯¯") {
-            this.shrugGuy = "¯¯\\_(ツ)_/¯";
-          } else {
-            this.shrugGuy = "¯\\_(ツ)_/¯¯";
-          }
-        }, 1000);
-      }
+        async getQuotes() {
+            try {
+                const response = await QuotesService.fetchQuotes();
+                this.fetching = false;
+                this.quotes = response.data.quotes;
+            } catch (e) {
+                this.errors.api = true;
+                console.log("error: ", e);
+            }
+            
+        },
+        drawShrug() {
+            setInterval(() => {
+                if (this.shrugGuy === "¯\\_(ツ)_/¯¯") {
+                    this.shrugGuy = "¯¯\\_(ツ)_/¯";
+                } else {
+                    this.shrugGuy = "¯\\_(ツ)_/¯¯";
+                }
+            }, 1000);
+        }
     }
-  };
+};
 </script>
 
 <style scoped>

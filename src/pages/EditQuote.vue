@@ -46,7 +46,6 @@ export default {
     },
     methods: {
         async getQuote() {
-            // TODO https://blog.grossman.io/how-to-write-async-await-without-try-catch-blocks-in-javascript/
             try {
                 const response = await QuotesService.getQuote({
                     id: this.$route.params.id

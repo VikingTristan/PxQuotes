@@ -7,6 +7,9 @@
             <h2 class="panel-title">Quotes</h2>
           </header>
           <div class="panel-body">
+            <button @click="checkLogin" class="btn btn-danger">Checklogin</button>
+            <a href="http://localhost:8082/login" class="btn btn-warning">Check login with direct link</a>
+            <div @click="logout" class="btn btn-brand">Log out</div>
             <div v-if="!fetching">
               <div v-if="!quotes.length" style="padding: 50px; text-align: center;">
                 <h1 v-html="shrugGuy"></h1>
@@ -57,6 +60,7 @@
 
 <script>
 import QuotesService from "@/services/QuotesService";
+import AuthenticationService from "@/services/AuthenticationService";
 
 export default {
     name: "quotes",
@@ -94,7 +98,16 @@ export default {
                     this.shrugGuy = "¯\\_(ツ)_/¯¯";
                 }
             }, 1000);
+        },
+        async checkLogin(){
+            const response = await AuthenticationService.checkLogin();
+            console.log("Response?", response);
+        },
+        async logout(){
+            const response = await AuthenticationService.logout();
+            console.log("response here?", response);
         }
+        
     }
 };
 </script>

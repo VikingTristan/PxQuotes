@@ -61,13 +61,13 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
   .panel-body {
     height: 300px;
     position: relative;
   }
 
-  .panel-body .loader, .panel-body .h3 {
+   .panel-body .loader, .panel-body .h3 {
     width: 50%;
     height: 50%;
     margin: auto;
@@ -77,4 +77,4 @@ export default {
     bottom: 0;
     right: 0;
   }
-</style>
+</style> 

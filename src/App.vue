@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import "@/assets/js/designguide";
+// import "@/assets/js/designguide";
 
 export default {
     name: "App"
@@ -14,7 +14,7 @@ export default {
 </script>
 
 <style>
-    @import "./assets/less/designguide.less";
+    /* @import "./assets/less/designguide.less"; */
     /* @import "./assets/less/style.less"; */
 
     @import "./assets/less/snotify.less";
